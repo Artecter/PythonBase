@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="D:\Artecter\OneDrive\Documents\2 Python OOP\venv"
+VIRTUAL_ENV="D:\Artecter\GitHub\PythonBase\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
