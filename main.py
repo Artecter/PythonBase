@@ -1,7 +1,12 @@
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow
+from base import base_method
 
 import sys
+
+
+def add_label():
+    base_method()
 
 
 def application():
@@ -17,6 +22,9 @@ def application():
     main_text.adjustSize()
 
     btn = QtWidgets.QPushButton(window)
+    btn.move(70, 150)
+    btn.setText("Нажать!")
+    btn.setFixedWidth(200)
 
     window.show()
     sys.exit(app.exec_())
@@ -24,3 +32,4 @@ def application():
 
 if __name__ == "__main__":
     application()
+    base_method()
