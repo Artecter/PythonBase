@@ -11,6 +11,13 @@ def application():
     window.setWindowTitle("Python Base")
     window.setGeometry(300, 250, 350, 200)
 
+    main_text = QtWidgets.QLabel(window)
+    main_text.setText("Работает!")
+    main_text.move(100, 100)
+    main_text.adjustSize()
+
+    btn = QtWidgets.QPushButton(window)
+
     window.show()
     sys.exit(app.exec_())
 
