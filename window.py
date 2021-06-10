@@ -1,6 +1,6 @@
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QMainWindow
-from PyQt5.QtWidgets import QApplication
+from PyQt5.QtWidgets import QApplication, QMainWindow
+
 import sys
 
 
@@ -11,13 +11,8 @@ class Window(QMainWindow):
         self.setWindowTitle("Python Base")
         self.setGeometry(300, 250, 350, 200)
 
-        self.new_text = QtWidgets.QLabel(self)
-        self.new_text.setText("Работает!")
-        self.new_text.move(100, 50)
-        self.new_text.adjustSize()
-
         self.main_text = QtWidgets.QLabel(self)
-        self.main_text.setText("Работает!")
+        self.main_text.setText("Пусто")
         self.main_text.move(100, 100)
         self.main_text.adjustSize()
 
@@ -25,10 +20,11 @@ class Window(QMainWindow):
         self.btn.move(70, 150)
         self.btn.setText("Нажать!")
         self.btn.setFixedWidth(200)
-        self.btn.clicked.connect()
+        self.btn.clicked.connect(self.add_label)
 
-    def add_text(self, text):
-        self.new_text.setText(text)
+    def add_label(self):
+        self.main_text.setText("Работает!")
+        self.main_text.adjustSize()
 
 
 def application():
@@ -41,3 +37,4 @@ def application():
 
 if __name__ == "__main__":
     application()
+

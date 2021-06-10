@@ -8,7 +8,7 @@ bk_list = []
 export_filename = "export.csv"
 
 
-def menu():
+def main():
     # Импорт данных
     for i in data_import(import_filename):
         bk1 = Bk()
@@ -89,5 +89,5 @@ def menu():
     data_export(export_filename, list1)
 
 
-menu()
+main()
 
