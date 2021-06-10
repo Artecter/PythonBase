@@ -3,7 +3,6 @@ from window import main as window
 
 
 window()
-console()
 
 
 

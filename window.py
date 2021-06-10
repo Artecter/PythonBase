@@ -13,21 +13,22 @@ class Window(QMainWindow):
         # MainText
         self.main_text = QtWidgets.QLabel(self)
         self.main_text.setText("Пусто")
-        self.main_text.move(100, 100)
+        self.main_text.move(10, 10)
         self.main_text.adjustSize()
         # TextBox
         self.text_box = QtWidgets.QPlainTextEdit(self)
-        self.text_box.move(100, 125)
-        self.main_text.setFixedWidth(200)
+        self.text_box.move(10, 75)
+        self.main_text.setFixedWidth(100)
         # Button
         self.button = QtWidgets.QPushButton(self)
-        self.button.move(100, 150)
+        self.button.move(10, 40)
         self.button.setText("Нажать!")
-        self.button.setFixedWidth(200)
         self.button.clicked.connect(self.add_label)
 
     def add_label(self):
-        self.main_text.setText("Работает!")
+        self.text_box.setPlainText("Бр!")
+        text = "Бр"
+        self.main_text.setText(text)
         self.main_text.adjustSize()
 
 

@@ -17,3 +17,9 @@ def data_export(filename, list1):
         writer.writerows(list1)
 
 
+def request(filename):
+    pass
+
+
+
+
