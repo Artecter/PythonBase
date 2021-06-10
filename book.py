@@ -1,55 +1,33 @@
+from attribute import Attribute as Att
+
+
 class Book(object):
     def __init__(self, name="", author="", year=0, publisher="", description="", picture="", isbn=0):
-        self.name = name
-        self.author = author
-        self.year = int(year)
-        self.publisher = publisher
-        self.description = description
-        self.picture = picture
-        self.isbn = isbn
+        self.name = Att(name)
+        self.author = Att(author)
+        self.year = Att(int(year))
+        self.publisher = Att(publisher)
+        self.description = Att(description)
+        self.picture = Att(picture)
+        self.isbn = Att(isbn)
 
-# set methods
+    def name(self):
+        return self.name()
 
-    def set_name(self, name):
-        self.name = name
+    def author(self):
+        return self.author()
 
-    def set_author(self, author):
-        self.author = author
+    def year(self):
+        return self.year()
 
-    def set_year(self, year):
-        self.year = year
+    def publisher(self):
+        return self.publisher()
 
-    def set_publisher(self, publisher):
-        self.publisher = publisher
+    def description(self):
+        return self.description()
 
-    def set_description(self, description):
-        self.description = description
+    def picture(self):
+        return self.picture()
 
-    def set_picture(self, picture):
-        self.picture = picture
-
-    def set_isbn(self, isbn):
-        self.isbn = isbn
-
-# get methods
-
-    def get_name(self):
-        return self.name
-
-    def get_author(self):
-        return self.author
-
-    def get_year(self):
-        return self.year
-
-    def get_publisher(self):
-        return self.publisher
-
-    def get_description(self):
-        return self.description
-
-    def get_picture(self):
-        return self.picture
-
-    def get_isbn(self):
-        return self.isbn
+    def isbn(self):
+        return self.isbn()

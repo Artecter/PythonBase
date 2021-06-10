@@ -8,17 +8,18 @@ bk_list = []
 export_filename = "export.csv"
 
 
-def base_method():
+def menu():
+    # Импорт данных
     for i in data_import(import_filename):
         bk1 = Bk()
         list1 = list(i)
-        bk1.set_name(list1[0])
-        bk1.set_author(list1[1])
-        bk1.set_year(list1[2])
-        bk1.set_publisher(list1[3])
-        bk1.set_description(list1[4])
+        bk1.name.set(list1[0])
+        bk1.author.set(list1[1])
+        bk1.year.set(list1[2])
+        bk1.publisher.set(list1[3])
+        bk1.description.set(list1[4])
         bk_list.append(bk1)
-
+    # Обработка данных
     while True:
         print(f"\nВведите цифру от 1 до 5:")
         print(f"1 - список книг")
@@ -33,32 +34,32 @@ def base_method():
                 for i in range(len(bk_list)):
                     print(f"\nКНИГА №{i + 1}")
                     bk1 = bk_list[i]
-                    print(f"Имя: {bk1.get_name()}")
-                    print(f"Автор: {bk1.get_author()}")
-                    print(f"Год: {bk1.get_year()}")
-                    print(f"Издатель: {bk1.get_publisher()}")
-                    print(f"Описание: {bk1.get_description()}")
+                    print(f"Имя: {bk1.name.get()}")
+                    print(f"Автор: {bk1.author.get()}")
+                    print(f"Год: {bk1.year.get()}")
+                    print(f"Издатель: {bk1.publisher.get()}")
+                    print(f"Описание: {bk1.description.get()}")
             else:
                 print("\nПУСТО!")
         elif n == 2:
             print(f"\nНОВАЯ КНИГА:")
             bk1 = Bk()
-            bk1.set_name(input("Имя: "))
-            bk1.set_author(input("Автор: "))
-            bk1.set_year(int(input("Год: ")))
-            bk1.set_publisher(input("Издатель: "))
-            bk1.set_description(input("Описание: "))
+            bk1.name.set(input("Имя: "))
+            bk1.author.set(input("Автор: "))
+            bk1.year.set(int(input("Год: ")))
+            bk1.publisher.set(input("Издатель: "))
+            bk1.description.set(input("Описание: "))
             bk_list.append(bk1)
             print(f"Новая книга успешно добавлена!")
         elif n == 3:
             i = int(input("\nИЗМЕНЕНИЕ КНИГИ №"))
             if i - 1 < len(bk_list):
                 bk1 = Bk()
-                bk1.set_name(input("Имя: "))
-                bk1.set_author(input("Автор: "))
-                bk1.set_year(int(input("Год: ")))
-                bk1.set_publisher(input("Издатель: "))
-                bk1.set_description(input("Описание: "))
+                bk1.name.set(input("Имя: "))
+                bk1.author.set(input("Автор: "))
+                bk1.year.set(int(input("Год: ")))
+                bk1.publisher.set(input("Издатель: "))
+                bk1.description.set(input("Описание: "))
                 bk_list[i - 1] = bk1
                 print(f"Книга №{i} успешно изменена!")
             else:
@@ -75,14 +76,18 @@ def base_method():
         else:
             print("\nНеверная цифра, попробуйте еще раз!")
     print(f"\nВЫХОД!")
-
+    # Экспорт данных
     list1 = list()
     for bk1 in bk_list:
         list2 = list()
-        list2.append(bk1.get_name())
-        list2.append(bk1.get_author())
-        list2.append(bk1.get_year())
-        list2.append(bk1.get_publisher())
-        list2.append(bk1.get_description())
+        list2.append(bk1.name.get())
+        list2.append(bk1.author.get())
+        list2.append(bk1.year.get())
+        list2.append(bk1.publisher.get())
+        list2.append(bk1.description.get())
         list1.append(list2)
     data_export(export_filename, list1)
+
+
+menu()
+

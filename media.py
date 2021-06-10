@@ -1,3 +1,6 @@
+from attribute import Attribute as Att
+
+
 class Media(object):
     def __init__(self):
         pass
@@ -5,53 +8,27 @@ class Media(object):
 
 class Link(Media):
     def __init__(self, protocol, host, way):
-        self.protocol = protocol
-        self.host = host
-        self.way = way
+        self.protocol = Att(protocol)
+        self.host = Att(host)
+        self.way = Att(way)
 
-# set methods
-
-    def set_protocol(self, protocol):
-        self.protocol = protocol
-
-    def set_host(self, host):
-        self.host = host
-
-    def set_way(self, way):
-        self.way = way
-
-# get methods
-
-    def get_protocol(self):
+    def protocol(self):
         return self.protocol
 
-    def get_host(self):
+    def host(self):
         return self.host
 
-    def get_way(self):
+    def way(self):
         return self.way
 
 
 class Video(Media):
     def __init__(self, name, file):
-        self.name = name
-        self.file = file
+        self.name = Att(name)
+        self.file = Att(file)
 
-# set methods
-
-    def set_name(self, name):
-        self.name = name
-
-    def set_file(self, file):
-        self.file = file
-
-# get methods
-
-    def get_name(self):
+    def name(self):
         return self.name
 
-    def get_file(self):
+    def file(self):
         return self.file
-
-# Моя Викусенька
-print("Надо было терпеть до туалета. Но я же не терпила.(С) СТЕТХЭМ")
