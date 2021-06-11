@@ -11,10 +11,9 @@ def data_import(filename):
 
 
 def data_export(filename, list1):
-    file = open(filename, 'w', encoding='utf-8')
-    with file:
-        writer = csv.writer(file)
-        writer.writerows(list1)
+    with open(filename, 'w', encoding='utf-8') as file:
+        for i in list1:
+            file.write(str(i))
 
 
 def request(filename):
