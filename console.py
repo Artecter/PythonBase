@@ -1,11 +1,11 @@
-from book import Book as Bk
+from media import Book as Bk
 from porting import data_import
 from porting import data_export
 
 
-import_filename = "import.csv"
+import_filename = "data.csv"
 bk_list = []
-export_filename = "export.csv"
+export_filename = "data.csv"
 
 
 def main():
@@ -87,7 +87,4 @@ def main():
         list2.append(bk.description.get())
         list1.append(list2)
     data_export(export_filename, list1)
-
-
-main()
 

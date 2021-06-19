@@ -19,12 +19,12 @@ class Window(QMainWindow):
         self.text_box1 = QtWidgets.QTextEdit(self)
         self.text_box1.move(10, 75)
         self.text_box1.setFixedWidth(100)
-        self.text_box1.setPlainText("Че?")
+        self.text_box1.setPlainText("1")
         # TextBox2
         self.text_box2 = QtWidgets.QTextEdit(self)
         self.text_box2.move(110, 75)
         self.text_box2.setFixedWidth(100)
-        self.text_box2.setPlainText("Че?")
+        self.text_box2.setPlainText("2")
         # Button
         self.button = QtWidgets.QPushButton(self)
         self.button.move(10, 40)
@@ -45,9 +45,6 @@ def application():
 
 
 def main():
-    if __name__ == "__main__":
-        application()
+    application()
 
-
-main()
 
