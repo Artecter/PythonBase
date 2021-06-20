@@ -3,7 +3,7 @@ from convert import csv_write as write
 from convert import pdf_write as pdf
 from interface import Console as Interface
 
-filename = "books.csv"
+filename = "videos.csv"
 
 menu = Interface(read(filename))
 while True:
