@@ -2,7 +2,7 @@ from convert import csv_read as read
 from convert import csv_write as write
 from interface import Interface
 
-filename = "video.csv"
+filename = "books.csv"
 
 data = read(filename)
 menu = Interface()
