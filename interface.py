@@ -62,7 +62,6 @@ class Interface(Singleton):
         return change(self.data, number, new_info)
 
     def delete(self, number):
-        number = 2
         return delete(self.data, number)
 
     def exit(self):
@@ -110,12 +109,6 @@ class Console(Interface):
 
     def error(self):
         print("Ошибка! ")
-
-    def set_data(self, data=""):
-        self.data = data
-
-    def get_data(self):
-        return self.data
 
 
 class Window(Interface):
