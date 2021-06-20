@@ -13,37 +13,47 @@ class Interface(Singleton):
 
     @staticmethod
     def choice():
-        return int(input("Введите цифру: "))
+        return int(input(f"\n1 - список\n2 - добавить\n3 - изменить\n4 - удалить\n5 - выход\nВведите цифру: "))
 
     @staticmethod
     def list(data):
-        print("Список: ")
+        print(f"\nСписок: ")
+        for i in data[1:]:
+            count = 1
+            print(f"\n{data[0][0]} №{i[0]}")
+            for j in i[1:]:
+                print(data[0][count], end=": ")
+                print(j)
+                count = count + 1
         pass
 
     @staticmethod
     def add(data):
-        print("Добавление: ")
+        print(f"\nДобавление: ")
+        new = list()
+        new.append(str(int(data[-1][0])+1))
+        for i in data[0][1:]:
+            new.append(str(input(f"{i}: ")))
+        data.append(new)
         return data
 
     @staticmethod
     def change(data):
-        print("Изменение: ")
+        print(f"\nИзменение: ")
         return data
 
     @staticmethod
     def delete(data):
-        print("Удаление: ")
+        print(f"\nУдаление: ")
         return data
 
     @staticmethod
     def exit():
-        print("Выход! ")
-        pass
+        print(f"\nВыход! ")
 
     @staticmethod
     def error():
-        print("Ошибка! ")
-        pass
+        print(f"\nОшибка! ")
 
 
 class Console(Interface):

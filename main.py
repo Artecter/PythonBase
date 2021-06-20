@@ -4,8 +4,6 @@ from interface import Interface
 
 filename = "data.csv"
 
-print(read(filename))
-
 data = read(filename)
 menu = Interface()
 while True:
@@ -26,6 +24,5 @@ while True:
         continue
 write(filename, data)
 
-print(read(filename))
 
 
