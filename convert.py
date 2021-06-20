@@ -1,7 +1,11 @@
 import csv
 
 
-def data_import(filename):
+def sql_request(database="", sql="", filename=""):
+    pass
+
+
+def csv_read(filename):
     list1 = list()
     with open(filename, 'r', encoding='utf-8') as file:
         file_reader = csv.reader(file, delimiter=",")
@@ -10,7 +14,7 @@ def data_import(filename):
     return list1
 
 
-def data_export(filename, list1):
+def csv_write(filename, list1):
     s = str()
     for i in list1:
         s = s + ','.join(i) + '\n'
@@ -19,9 +23,5 @@ def data_export(filename, list1):
             file.write(str(i))
 
 
-def request(filename):
+def pdf_writer(filename="", pdf_filename=""):
     pass
-
-
-
-
