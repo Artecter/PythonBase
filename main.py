@@ -1,6 +1,6 @@
 from convert import csv_read as read
 from convert import csv_write as write
-from interface import Interface
+from interface import Console as Interface
 
 filename = "books.csv"
 

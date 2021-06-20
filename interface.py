@@ -13,6 +13,39 @@ class Interface(Singleton):
 
     @staticmethod
     def choice():
+        pass
+
+    @staticmethod
+    def list(data):
+        pass
+
+    @staticmethod
+    def add(data):
+        pass
+
+    @staticmethod
+    def change(data):
+        pass
+
+    @staticmethod
+    def delete(data):
+        pass
+
+    @staticmethod
+    def exit():
+        pass
+
+    @staticmethod
+    def error():
+        pass
+
+
+class Console(Interface):
+    def __init__(self):
+        pass
+
+    @staticmethod
+    def choice():
         return int(input(f"\n1 - список\n2 - добавить\n3 - изменить\n4 - удалить\n5 - выход\nВведите цифру: "))
 
     @staticmethod
@@ -64,9 +97,34 @@ class Interface(Singleton):
         print(f"\nОшибка! ")
 
 
-class Console(Interface):
-    pass
-
-
 class Window(Interface):
-    pass
+    def __init__(self):
+        pass
+
+    @staticmethod
+    def choice():
+        pass
+
+    @staticmethod
+    def list(data):
+        pass
+
+    @staticmethod
+    def add(data):
+        pass
+
+    @staticmethod
+    def change(data):
+        pass
+
+    @staticmethod
+    def delete(data):
+        pass
+
+    @staticmethod
+    def exit():
+        pass
+
+    @staticmethod
+    def error():
+        pass
