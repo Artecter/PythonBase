@@ -1,4 +1,6 @@
 import csv
+import pandas as pd
+import pdfkit as pdf
 
 
 def csv_read(filename):
@@ -17,4 +19,12 @@ def csv_write(filename, list1):
     with open(filename, 'w', encoding='utf-8') as file:
         for i in s:
             file.write(str(i))
+
+
+def pdf_write(csv_file):
+    html_file = csv_file[:-3]+'html'
+    pdf_file = csv_file[:-3]+'pdf'
+    df = pd.read_csv(csv_file, sep=',')
+    df.to_html(html_file)
+    pdf.from_file(html_file, pdf_file)
 

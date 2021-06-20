@@ -1,28 +1,32 @@
 from convert import csv_read as read
 from convert import csv_write as write
+from convert import pdf_write as pdf
 from interface import Console as Interface
 
 filename = "books.csv"
 
-data = read(filename)
-menu = Interface()
+menu = Interface(read(filename))
 while True:
     choice = menu.choice()
     if choice == 1:
-        menu.list(data)
+        menu.enum()
     elif choice == 2:
-        data = menu.add(data)
+        menu.add()
     elif choice == 3:
-        data = menu.change(data)
+        menu.change()
     elif choice == 4:
-        data = menu.delete(data)
+        menu.delete()
     elif choice == 5:
         menu.exit()
         break
     else:
         menu.error()
         continue
-write(filename, data)
+write(filename, menu.get_data())
+
+# pdf(filename)
+
+
 
 
 
