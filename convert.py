@@ -1,10 +1,6 @@
 import csv
 
 
-def sql_request(database="", sql="", filename=""):
-    pass
-
-
 def csv_read(filename):
     list1 = list()
     with open(filename, 'r', encoding='utf-8') as file:
@@ -22,6 +18,3 @@ def csv_write(filename, list1):
         for i in s:
             file.write(str(i))
 
-
-def pdf_writer(filename="", pdf_filename=""):
-    pass
