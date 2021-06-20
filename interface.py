@@ -18,14 +18,15 @@ class Interface(Singleton):
     @staticmethod
     def list(data):
         print(f"\nСписок: ")
+        raw = 1
         for i in data[1:]:
-            count = 1
-            print(f"\n{data[0][0]} №{i[0]}")
+            col = 1
+            print(f"\n{data[0][0]} №{raw}")
             for j in i[1:]:
-                print(data[0][count], end=": ")
+                print(data[0][col], end=": ")
                 print(j)
-                count = count + 1
-        pass
+                col = col + 1
+            raw = raw + 1
 
     @staticmethod
     def add(data):
@@ -40,11 +41,18 @@ class Interface(Singleton):
     @staticmethod
     def change(data):
         print(f"\nИзменение: ")
+        number = int(input(f"\n{data[0][0]} №"))
+        new = list(str(number))
+        for i in data[0][1:]:
+            new.append(str(input(f"{i}: ")))
+        data[number][:] = new
         return data
 
     @staticmethod
     def delete(data):
         print(f"\nУдаление: ")
+        number = int(input(f"\n{data[0][0]} №"))
+        data.remove(data[:][number])
         return data
 
     @staticmethod
