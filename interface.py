@@ -22,7 +22,7 @@ class Interface(Singleton):
 
     @staticmethod
     def add(data):
-        print("add")
+        print("Add")
         return data
 
     @staticmethod
