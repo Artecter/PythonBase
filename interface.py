@@ -13,36 +13,36 @@ class Interface(Singleton):
 
     @staticmethod
     def choice():
-        return int(input("Enter "))
+        return int(input("Введите цифру: "))
 
     @staticmethod
     def list(data):
-        print("List")
+        print("Список: ")
         pass
 
     @staticmethod
     def add(data):
-        print("Add")
+        print("Добавление: ")
         return data
 
     @staticmethod
     def change(data):
-        print("Change")
+        print("Изменение: ")
         return data
 
     @staticmethod
     def delete(data):
-        print("Delete")
+        print("Удаление: ")
         return data
 
     @staticmethod
     def exit():
-        print("Exit")
+        print("Выход! ")
         pass
 
     @staticmethod
     def error():
-        print("Error")
+        print("Ошибка! ")
         pass
 
 
