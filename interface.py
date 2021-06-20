@@ -112,4 +112,26 @@ class Console(Interface):
 
 
 class Window(Interface):
-    pass
+    def __init__(self):
+        pass
+
+    def choice(self):
+        return int(input())
+
+    def enum(self):
+        print(enum(self.data))
+
+    def add(self, new_info=[]):
+        return add(self.data, new_info)
+
+    def change(self, number=0, new_info=[]):
+        return change(self.data, number, new_info)
+
+    def delete(self, number=0):
+        return delete(self.data, number)
+
+    def exit(self):
+        pass
+
+    def error(self):
+        pass
