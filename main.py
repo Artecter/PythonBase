@@ -5,9 +5,8 @@ from convert import pdf_write as pdf
 from window import application as window
 from console import main as console
 
-interface = True
-# 0 - Console, 1 - Window
-filename = "videos.csv"
+interface = open('config').read().split('\n')[0].split('=')[1]
+filename = open('config').read().split('\n')[1].split('=')[1]
 data = read(filename)
 
 if interface:
