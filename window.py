@@ -1,7 +1,8 @@
 # 21.06.2021 Copyright Zeggoz
 
-from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5 import QtWidgets, QtGui
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
 from data import Data
 from convert import csv_write as write
 import sys
@@ -15,7 +16,7 @@ class Window(QMainWindow):
 
         self.setWindowTitle("Python Base")
         self.setGeometry(300, 250, 450, 200)
-        # self.setWindowIcon(QIcon("menu.ico"))
+        self.setWindowIcon(QtGui.QIcon("menu.ico"))
         # MainText
         self.main_text = QtWidgets.QLabel(self)
         # Text
