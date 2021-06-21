@@ -1,7 +1,11 @@
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow
+from convert import csv_read as read
+from interface import enum
 
 import sys
+
+data = read("videos.csv")
 
 
 class Window(QMainWindow):
@@ -26,7 +30,13 @@ class Window(QMainWindow):
         self.button5 = QtWidgets.QPushButton(self)
         # TextBox1
         self.text_box1 = QtWidgets.QTextEdit(self)
-        self.text_box1.move(1000, 1000)
+        self.text_box1.hide()
+        # ContextText
+        self.context_text = QtWidgets.QLabel(self)
+        self.context_text.move(200, 40)
+        # ContextButton
+        self.text_button = QtWidgets.QTextEdit(self)
+        self.text_button.hide()
 
     def choice(self):
         # Textbox1
@@ -61,12 +71,16 @@ class Window(QMainWindow):
         self.button5.move(25, 125)
         self.button5.setText("5 - выход")
         self.button5.clicked.connect(self.exit)
+        # ContextText
+        self.context_text.setText("")
 
     def enum(self):
         # Textbox1
         self.text_box1.move(1000, 1000)
-        self.text.setText("Список: ")
+        self.text.setText(enum(data))
         self.text.adjustSize()
+        # ContextText
+        self.context_text.setText("")
 
     def add(self):
         # Textbox1
@@ -74,9 +88,16 @@ class Window(QMainWindow):
         self.text.setText("Добавление: ")
         self.text.adjustSize()
         # TextBox1
-        self.text_box1.move(150, 75)
+        self.text_box1.move(200, 75)
         self.text_box1.setFixedWidth(100)
         self.text_box1.setPlainText("1")
+        # ContextText
+        self.context_text.setText("Поле:")
+        # TextBox1
+        self.text_box1.show()
+        # ContextButton
+        self.context_button.move(200, 200)
+        self.context_button.show()
 
     def change(self):
         # Textbox1
@@ -84,9 +105,16 @@ class Window(QMainWindow):
         self.text.setText("Изменение: ")
         self.text.adjustSize()
         # TextBox1
-        self.text_box1.move(150, 75)
+        self.text_box1.move(200, 75)
         self.text_box1.setFixedWidth(100)
         self.text_box1.setPlainText("1")
+        # ContextText
+        self.context_text.setText("Поле:")
+        # TextBox1
+        self.text_box1.show()
+        # ContextButton
+        self.text_box1.move(200, 200)
+        self.text_box1.show()
 
     def delete(self):
         # Textbox1
@@ -94,15 +122,23 @@ class Window(QMainWindow):
         self.text.setText("Удаление: ")
         self.text.adjustSize()
         # TextBox1
-        self.text_box1.move(150, 75)
+        self.text_box1.move(200, 75)
         self.text_box1.setFixedWidth(100)
         self.text_box1.setPlainText("1")
+        # ContextText
+        self.context_text.setText("Поле:")
+        # TextBox1
+        self.text_box1.show()
+        # ContextButton
+        self.text_box1.show()
+        self.text_box1.move(200, 200)
 
     def exit(self):
         # Textbox1
         self.text_box1.move(1000, 1000)
         self.text.setText("Выход: ")
         self.text.adjustSize()
+        sys.exit(self.exec_())
 
 
 def application():
