@@ -35,8 +35,11 @@ class Window(QMainWindow):
         self.context_text = QtWidgets.QLabel(self)
         self.context_text.move(200, 40)
         # ContextButton
-        self.text_button = QtWidgets.QTextEdit(self)
-        self.text_button.hide()
+        self.context_button = QtWidgets.QPushButton(self)
+        self.context_button.setText("Далее")
+        self.context_button.adjustSize()
+        self.context_button.move(200, 120)
+        self.context_button.hide()
 
     def choice(self):
         # Textbox1
@@ -81,6 +84,8 @@ class Window(QMainWindow):
         self.text.adjustSize()
         # ContextText
         self.context_text.setText("")
+        # ContextButton
+        self.context_button.hide()
 
     def add(self):
         # Textbox1
@@ -96,7 +101,6 @@ class Window(QMainWindow):
         # TextBox1
         self.text_box1.show()
         # ContextButton
-        self.context_button.move(200, 200)
         self.context_button.show()
 
     def change(self):
@@ -113,8 +117,7 @@ class Window(QMainWindow):
         # TextBox1
         self.text_box1.show()
         # ContextButton
-        self.text_box1.move(200, 200)
-        self.text_box1.show()
+        self.context_button.show()
 
     def delete(self):
         # Textbox1
@@ -130,8 +133,7 @@ class Window(QMainWindow):
         # TextBox1
         self.text_box1.show()
         # ContextButton
-        self.text_box1.show()
-        self.text_box1.move(200, 200)
+        self.context_button.show()
 
     def exit(self):
         # Textbox1
