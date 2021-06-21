@@ -15,6 +15,7 @@ class Window(QMainWindow):
 
         self.setWindowTitle("Python Base")
         self.setGeometry(300, 250, 450, 200)
+        # self.setWindowIcon(QIcon("menu.ico"))
         # MainText
         self.main_text = QtWidgets.QLabel(self)
         # Text
