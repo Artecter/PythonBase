@@ -2,7 +2,6 @@
 
 from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
 from data import Data
 from convert import csv_write as write
 import sys
@@ -15,161 +14,128 @@ class Window(QMainWindow):
         super(Window, self).__init__()
 
         self.setWindowTitle("Python Base")
-        self.setGeometry(300, 250, 450, 200)
+        self.setGeometry(300, 250, 450, 300)
         self.setWindowIcon(QtGui.QIcon("menu.ico"))
-        # MainText
         self.main_text = QtWidgets.QLabel(self)
-        # Text
         self.text = QtWidgets.QLabel(self)
-        # Button1
-        self.button1 = QtWidgets.QPushButton(self)
-        # Button2
-        self.button2 = QtWidgets.QPushButton(self)
-        # Button3
-        self.button3 = QtWidgets.QPushButton(self)
-        # Button4
-        self.button4 = QtWidgets.QPushButton(self)
-        # Button5
-        self.button5 = QtWidgets.QPushButton(self)
-        # TextBox1
-        self.text_box1 = QtWidgets.QTextEdit(self)
-        self.text_box1.hide()
-        # ContextText
+        self.enum_btn = QtWidgets.QPushButton(self)
+        self.add_btn = QtWidgets.QPushButton(self)
+        self.change_btn = QtWidgets.QPushButton(self)
+        self.delete_btn = QtWidgets.QPushButton(self)
+        self.exit_btn = QtWidgets.QPushButton(self)
+        self.context_box = QtWidgets.QTextEdit(self)
+        self.context_box.hide()
         self.context_text = QtWidgets.QLabel(self)
         self.context_text.move(200, 40)
-        # ContextButton
-        self.context_button = QtWidgets.QPushButton(self)
-        self.context_button.setText("Далее")
-        self.context_button.adjustSize()
-        self.context_button.move(200, 120)
-        self.context_button.hide()
-        # for changes
+        self.context_btn = QtWidgets.QPushButton(self)
+        self.context_btn.setText("Далее")
+        self.context_btn.adjustSize()
+        self.context_btn.move(250, 250)
+        self.context_btn.hide()
         self.number = int()
         self.new_info = list()
-
-    def delete_data(self):
-        Data(self.data).delete(self.number)
-        self.choice()
-        self.context_text.setText(f"Удалено {self.data[0][0]} №{self.number}")
-        self.context_text.adjustSize()
-        self.choice()
-
-    def add_data(self):
-        new_info = list()
-        self.data = Data(self.data).add(new_info)
-        self.choice()
-        self.context_text.setText(f"Добавлено {self.data[0][0]} №{self.number}")
-        self.context_text.adjustSize()
+        self.number_txt = QtWidgets.QTextEdit(self)
+        self.number_txt.hide()
+        self.number_box = QtWidgets.QTextEdit(self)
+        self.number_box.hide()
 
     def choice(self):
-        # Textbox1
-        self.text_box1.move(1000, 1000)
-        # MainText
+        self.context_box.move(1000, 1000)
         self.main_text = QtWidgets.QLabel(self)
         self.main_text.setText("Выберите: ")
         self.main_text.move(50, 10)
         self.main_text.adjustSize()
-        # Text
         self.text = QtWidgets.QLabel(self)
         self.text.setText("Пусто: ")
         self.text.move(200, 10)
         self.text.adjustSize()
-        # Button1
-        self.button1.move(25, 25)
-        self.button1.setText("Список")
-        self.button1.clicked.connect(self.enum)
-        # Button2
-        self.button2.move(25, 50)
-        self.button2.setText("Добавление")
-        self.button2.clicked.connect(self.add)
-        # Button3
-        self.button3.move(25, 75)
-        self.button3.setText("Изменение")
-        self.button3.clicked.connect(self.change)
-        # Button4
-        self.button4.move(25, 100)
-        self.button4.setText("Удаление")
-        self.button4.clicked.connect(self.delete)
-        # Button5
-        self.button5.move(25, 125)
-        self.button5.setText("Выход")
-        self.button5.clicked.connect(self.exit)
-        # ContextText
+        self.enum_btn.move(25, 25)
+        self.enum_btn.setText("Список")
+        self.enum_btn.clicked.connect(self.enum)
+        self.add_btn.move(25, 50)
+        self.add_btn.setText("Добавление")
+        self.add_btn.clicked.connect(self.add)
+        self.change_btn.move(25, 75)
+        self.change_btn.setText("Изменение")
+        self.change_btn.clicked.connect(self.change)
+        self.delete_btn.move(25, 100)
+        self.delete_btn.setText("Удаление")
+        self.delete_btn.clicked.connect(self.delete)
+        self.exit_btn.move(25, 125)
+        self.exit_btn.setText("Выход")
+        self.exit_btn.clicked.connect(self.exit)
         self.context_text.setText("")
 
     def enum(self):
-        # Textbox1
-        self.text_box1.hide()
+        self.context_box.hide()
+        self.text.setText("")
         self.text.setText(Data(self.data).enum())
+        self.text.show()
         self.text.adjustSize()
-        # ContextText
         self.context_text.setText("")
-        # ContextButton
-        self.context_button.hide()
+        self.context_btn.hide()
+
+    def add_data(self):
+        self.data = Data(self.data).add(self.context_box.toPlainText().split('\n'))
+        self.text.setText("Добавлено!")
+        self.choice()
+        self.context_btn.hide()
 
     def add(self):
-        # Textbox1
-        self.text_box1.move(1000, 1000)
+        self.number = 1
+        self.context_box.hide()
         self.text.setText("Добавление: ")
         self.text.adjustSize()
-        # TextBox1
-        self.text_box1.move(200, 75)
-        self.text_box1.setFixedWidth(100)
-        self.text_box1.setPlainText("1")
-        # ContextText
-        self.context_text.setText(f"{self.data[0][1]}:")
-        # TextBox1
-        self.text_box1.show()
-        # ContextButton
-        self.context_button.show()
+        self.context_box.move(300, 40)
+        self.context_box.setFixedWidth(100)
+        text = '\n'.join(self.data[0][1:])
+        self.context_box.setPlainText("")
+        self.context_box.adjustSize()
+        self.context_text.setText(text)
+        self.context_text.adjustSize()
+        self.context_box.show()
+        self.context_btn.setText("Добавить")
+        self.context_btn.show()
+        self.context_btn.clicked.connect(self.add_data)
 
     def change(self):
-        # Textbox1
-        self.text_box1.move(1000, 1000)
+        self.number = 1
+        self.context_box.hide()
         self.text.setText("Изменение: ")
         self.text.adjustSize()
-        # TextBox1
-        self.text_box1.move(200, 75)
-        self.text_box1.setFixedWidth(100)
-        self.text_box1.setPlainText("1")
-        # ContextText
-        self.context_text.setText(f"{self.data[0][0]} №")
-        # TextBox1
-        self.text_box1.show()
-        # ContextButton
-        self.context_button.show()
+        self.context_box.move(300, 40)
+        self.context_box.setFixedWidth(100)
+        text = '\n'.join(self.data[0][1:])
+        self.context_box.setPlainText(text)
+        self.context_box.adjustSize()
+        self.context_text.setText(text)
+        self.context_text.adjustSize()
+        self.context_box.show()
+        self.context_btn.setText("Изменить")
+        self.context_btn.show()
+        self.context_btn.clicked.connect(self.add_data)
 
     def delete(self):
         # Text
         self.text.setText("Удаление: ")
         self.text.adjustSize()
-        # TextBox1
-        self.text_box1.move(200, 75)
-        self.text_box1.setFixedWidth(100)
-        self.text_box1.setPlainText("1")
-        # ContextText
+        self.context_box.move(200, 75)
+        self.context_box.setFixedWidth(100)
+        self.context_box.setPlainText("1")
         self.context_text.setText(f"{self.data[0][0]} №")
-        # TextBox1
-        self.text_box1.show()
-        #
-        self.number = int(self.text_box1.toPlainText())
-        # ContextButton
-        self.context_button.show()
-        self.context_button.clicked.connect(self.delete_data)
+        self.context_box.show()
+        self.number = int(self.context_box.toPlainText())
+        self.context_btn.show()
 
     def exit(self):
         # Textbox1
-        self.text_box1.move(1000, 1000)
+        self.context_box.hide()
         self.text.setText("Выход: ")
         self.text.adjustSize()
-        # Context_Button
-        self.context_button.hide()
-        # Context_Text
+        self.context_btn.hide()
         self.context_text.setText("")
-        # Data Export
         write(self.filename, self.data)
-        # Window Close
-        self.closeEvent()
+        exit(0)
 
     def set_data(self, data):
         self.data = data
