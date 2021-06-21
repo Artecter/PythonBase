@@ -51,7 +51,46 @@ class Singleton(object):
         return cls.__instance
 
 
-class Interface(Singleton):
+class Data(Singleton):
+    def __init__(self, data):
+        self.data = data
+
+    def enum(self):
+        text = "Список: "
+        raw = 1
+        for i in self.data[1:]:
+            col = 1
+            text = text + f"\n\n{self.data[0][0]} №{raw}"
+            for j in i[1:]:
+                text = text + f"\n{self.data[0][col]}: {j}"
+                col = col + 1
+            raw = raw + 1
+        return text
+
+    def add(self, new_info):
+        list1 = list(str(int(self.data[-1][0]) + 1))
+        for i in new_info:
+            list1.append(i)
+        self.data.append(list1)
+        return self.data
+
+    def change(self, number, new_info):
+        if int(number) > int(self.data[-1][0]):
+            return self.data
+        list1 = list(str(number))
+        for i in new_info:
+            list1.append(i)
+        self.data[int(number)][:] = list1
+        return self.data
+
+    def delete(self, number):
+        if int(number) > int(self.data[-1][0]):
+            return self.data
+        self.data.remove(self.data[:][int(number)])
+        return self.data
+
+
+class Menu(Singleton):
     def __init__(self, data):
         self.data = data
 
@@ -83,7 +122,7 @@ class Interface(Singleton):
         return self.data
 
 
-class Console(Interface):
+class Console_menu(Menu):
     def choice(self):
         return int(input(f"\n1 - список\n2 - добавить\n3 - изменить\n4 - удалить\n5 - выйти\nВыбор: "))
 
@@ -118,7 +157,7 @@ class Console(Interface):
 
 
 class Window(QMainWindow):
-    def __init__(self, data):
+    def __init__(self):
         super(Window, self).__init__()
 
         self.setWindowTitle("Python Base")
@@ -149,3 +188,7 @@ class Window(QMainWindow):
 
     def error(self):
         pass
+
+
+class Window_menu(Window, Menu):
+    pass

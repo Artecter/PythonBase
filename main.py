@@ -1,11 +1,11 @@
 from convert import csv_read as read
 from convert import csv_write as write
 from convert import pdf_write as pdf
-from interface import Console as Interface
+from interface import Console_menu as Menu
 
 filename = "videos.csv"
 
-menu = Interface(read(filename))
+menu = Menu(read(filename))
 while True:
     choice = menu.choice()
     if choice == 1:
