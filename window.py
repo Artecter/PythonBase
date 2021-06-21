@@ -91,6 +91,9 @@ class Window(QMainWindow):
         self.txt.adjustSize()
         self.contxt_txt.setText('')
         self.contxt_btn.hide()
+        self.number_box.hide()
+        self.number_txt.hide()
+        self.number_btn.hide()
 
     def data_add(self):
         self.data = Data(self.data).add(self.contxt_box.toPlainText().split('\n'))
