@@ -1,3 +1,9 @@
+from PyQt5 import QtWidgets
+from PyQt5.QtWidgets import QApplication, QMainWindow
+
+import sys
+
+
 def enum(data):
     text = "Список: "
     raw = 1
@@ -111,11 +117,19 @@ class Console(Interface):
         print("Ошибка! ")
 
 
-class Window(Interface):
-    def __init__(self):
-        pass
+class Window(QMainWindow):
+    def __init__(self, data):
+        super(Window, self).__init__()
+
+        self.setWindowTitle("Python Base")
+        self.setGeometry(300, 250, 350, 200)
 
     def choice(self):
+        app = QApplication(sys.argv)
+        window = Window()
+
+        window.show()
+        sys.exit(app.exec_())
         return int(input())
 
     def enum(self):
