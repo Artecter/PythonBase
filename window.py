@@ -3,11 +3,13 @@
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from data import Data
+from convert import csv_write as write
 import sys
 
 
 class Window(QMainWindow):
-    def __init__(self, data):
+    def __init__(self, filename, data):
+        self.filename = filename
         self.data = data
         super(Window, self).__init__()
 
@@ -94,7 +96,7 @@ class Window(QMainWindow):
 
     def enum(self):
         # Textbox1
-        self.text_box1.move(1000, 1000)
+        self.text_box1.hide()
         self.text.setText(Data(self.data).enum())
         self.text.adjustSize()
         # ContextText
@@ -161,7 +163,9 @@ class Window(QMainWindow):
         self.context_button.hide()
         # Context_Text
         self.context_text.setText("")
-        # Close Window
+        # Data Export
+        write(self.filename, self.data)
+        # Window Close
         self.closeEvent()
 
     def set_data(self, data):
@@ -171,13 +175,11 @@ class Window(QMainWindow):
         return self.data
 
 
-def application(data):
+def application(filename, data):
 
     app = QApplication(sys.argv)
-    window = Window(data)
+    window = Window(filename, data)
 
     window.choice()
     window.show()
     sys.exit(app.exec_())
-
-    return window.get_data()

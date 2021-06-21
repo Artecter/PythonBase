@@ -10,11 +10,9 @@ filename = open('config').read().split('\n')[1].split('=')[1]
 data = read(filename)
 
 if interface:
-    data = window(data)
+    window(filename, data)
 else:
-    data = console(data)
-
-write(filename, data)
+    write(filename, console(data))
 
 # pdf(filename)
 
