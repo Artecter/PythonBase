@@ -1,5 +1,4 @@
 # 20.06.2021 Copyright Artecter
-# 21.06.2021 Copyright Eyonde
 
 import csv
 import pandas as pd
@@ -23,6 +22,8 @@ def csv_write(filename, list1):
         for i in s:
             file.write(str(i))
 
+
+# 21.06.2021 Copyright Eyonde
 
 def pdf_write(csv_file):
     html_file = csv_file[:-3]+'html'

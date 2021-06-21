@@ -1,4 +1,5 @@
 # 20.06.2021 Copyright Artecter
+
 from convert import csv_read as read
 from convert import csv_write as write
 from convert import pdf_write as pdf
@@ -14,7 +15,7 @@ if interface:
 else:
     write(filename, console(data))
 
-# pdf(filename)
+pdf(filename)
 
 
 

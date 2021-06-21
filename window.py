@@ -4,6 +4,7 @@ from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtWidgets import *
 from data import Data
 from convert import csv_write as write
+from convert import pdf_write as pdf
 import sys
 
 
@@ -24,6 +25,8 @@ class Window(QMainWindow):
         self.delete_btn = QtWidgets.QPushButton(self)
         self.exit_btn = QtWidgets.QPushButton(self)
         self.contxt_box = QtWidgets.QTextEdit(self)
+        self.contxt_box.setFixedWidth(500)
+        self.contxt_box.setFixedHeight(150)
         self.contxt_box.hide()
         self.contxt_txt = QtWidgets.QLabel(self)
         self.contxt_txt.move(200, 40)
@@ -103,7 +106,6 @@ class Window(QMainWindow):
         self.contxt_box.setFixedWidth(100)
         text = '\n'.join(self.data[0][1:])
         self.contxt_box.setPlainText("")
-        self.contxt_box.adjustSize()
         self.contxt_txt.setText(text)
         self.contxt_txt.adjustSize()
         self.contxt_box.show()
@@ -132,7 +134,6 @@ class Window(QMainWindow):
         self.contxt_box.setFixedWidth(100)
         text = '\n'.join(self.data[0][1:])
         self.contxt_box.setPlainText("")
-        self.contxt_box.adjustSize()
         self.contxt_txt.setText(text)
         self.contxt_txt.adjustSize()
         self.contxt_box.show()
@@ -160,7 +161,6 @@ class Window(QMainWindow):
         self.contxt_box.setFixedWidth(100)
         text = '\n'.join(self.data[0][1:])
         self.contxt_box.setPlainText("")
-        self.contxt_box.adjustSize()
         self.contxt_txt.setText(text)
         self.contxt_txt.adjustSize()
         self.contxt_box.show()
@@ -175,6 +175,7 @@ class Window(QMainWindow):
         self.contxt_btn.hide()
         self.contxt_txt.setText("")
         write(self.filename, self.data)
+        pdf(self.filename)
         exit(0)
 
     def set_data(self, data):
