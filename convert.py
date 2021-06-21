@@ -1,3 +1,6 @@
+# 20.06.2021 Copyright Artecter
+# 21.06.2021 Copyright Eyonde
+
 import csv
 import pandas as pd
 import pdfkit as pdf

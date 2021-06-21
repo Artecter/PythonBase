@@ -1,21 +1,18 @@
+# 21.06.2021 Copyright Zeggoz
+
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow
-from PyQt5.QtGui import QFont
-from convert import csv_read as read
-from interface import enum
-from interface import delete
-
+from data import Data
 import sys
-
-data = read("videos.csv")
 
 
 class Window(QMainWindow):
-    def __init__(self):
+    def __init__(self, data):
+        self.data = data
         super(Window, self).__init__()
 
         self.setWindowTitle("Python Base")
-        self.setGeometry(300, 250, 350, 200)
+        self.setGeometry(300, 250, 450, 200)
         # MainText
         self.main_text = QtWidgets.QLabel(self)
         # Text
@@ -42,6 +39,22 @@ class Window(QMainWindow):
         self.context_button.adjustSize()
         self.context_button.move(200, 120)
         self.context_button.hide()
+        # for changes
+        self.number = int()
+        self.new_info = list()
+
+    def delete_data(self):
+        Data(self.data).delete(self.number)
+        self.choice()
+        self.context_text.setText(f"Удалено {self.data[0][0]} №{self.number}")
+        self.context_text.adjustSize()
+
+    def add_data(self):
+        new_info = list()
+        Data(self.data).add(self.data, new_info)
+        self.choice()
+        self.context_text.setText(f"Добавлено {self.data[0][0]} №{self.number}")
+        self.context_text.adjustSize()
 
     def choice(self):
         # Textbox1
@@ -58,23 +71,23 @@ class Window(QMainWindow):
         self.text.adjustSize()
         # Button1
         self.button1.move(25, 25)
-        self.button1.setText("1 - список")
+        self.button1.setText("Список")
         self.button1.clicked.connect(self.enum)
         # Button2
         self.button2.move(25, 50)
-        self.button2.setText("2 - добавление")
+        self.button2.setText("Добавление")
         self.button2.clicked.connect(self.add)
         # Button3
         self.button3.move(25, 75)
-        self.button3.setText("3 - изменение")
+        self.button3.setText("Изменение")
         self.button3.clicked.connect(self.change)
         # Button4
         self.button4.move(25, 100)
-        self.button4.setText("4 - удаление")
+        self.button4.setText("Удаление")
         self.button4.clicked.connect(self.delete)
         # Button5
         self.button5.move(25, 125)
-        self.button5.setText("5 - выход")
+        self.button5.setText("Выход")
         self.button5.clicked.connect(self.exit)
         # ContextText
         self.context_text.setText("")
@@ -82,7 +95,7 @@ class Window(QMainWindow):
     def enum(self):
         # Textbox1
         self.text_box1.move(1000, 1000)
-        self.text.setText(enum(data))
+        self.text.setText(Data(self.data).enum())
         self.text.adjustSize()
         # ContextText
         self.context_text.setText("")
@@ -115,7 +128,7 @@ class Window(QMainWindow):
         self.text_box1.setFixedWidth(100)
         self.text_box1.setPlainText("1")
         # ContextText
-        self.context_text.setText(f"{data[0][0]} №")
+        self.context_text.setText(f"{self.data[0][0]} №")
         # TextBox1
         self.text_box1.show()
         # ContextButton
@@ -130,11 +143,14 @@ class Window(QMainWindow):
         self.text_box1.setFixedWidth(100)
         self.text_box1.setPlainText("1")
         # ContextText
-        self.context_text.setText(f"{data[0][0]} №")
+        self.context_text.setText(f"{self.data[0][0]} №")
         # TextBox1
         self.text_box1.show()
+        #
+        self.number = int(self.text_box1.toPlainText())
         # ContextButton
         self.context_button.show()
+        self.context_button.clicked.connect(self.delete_data)
 
     def exit(self):
         # Textbox1
@@ -145,17 +161,23 @@ class Window(QMainWindow):
         self.context_button.hide()
         # Context_Text
         self.context_text.setText("")
-        #
+        # Close Window
         self.closeEvent()
 
+    def set_data(self, data):
+        self.data = data
 
-def application():
+    def get_data(self):
+        return self.data
+
+
+def application(data):
+
     app = QApplication(sys.argv)
-    window = Window()
+    window = Window(data)
 
     window.choice()
     window.show()
     sys.exit(app.exec_())
 
-
-application()
+    return window.get_data()
