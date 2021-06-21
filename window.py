@@ -102,6 +102,8 @@ class Window(QMainWindow):
         self.text_box1.show()
         # ContextButton
         self.context_button.show()
+        #
+
 
     def change(self):
         # Textbox1
