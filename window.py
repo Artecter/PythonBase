@@ -50,6 +50,7 @@ class Window(QMainWindow):
         self.choice()
         self.context_text.setText(f"Удалено {self.data[0][0]} №{self.number}")
         self.context_text.adjustSize()
+        self.choice()
 
     def add_data(self):
         new_info = list()
@@ -68,7 +69,7 @@ class Window(QMainWindow):
         self.main_text.adjustSize()
         # Text
         self.text = QtWidgets.QLabel(self)
-        self.text.setText("")
+        self.text.setText("Пусто: ")
         self.text.move(200, 10)
         self.text.adjustSize()
         # Button1
