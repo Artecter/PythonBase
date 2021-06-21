@@ -1,9 +1,6 @@
 # 20.06.2021 Copyright Artecter
 
-from singleton import Singleton
-
-
-class Data(Singleton):
+class Data(object):
     def __init__(self, data_list):
         self.data_list = data_list
 
