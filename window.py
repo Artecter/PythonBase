@@ -1,7 +1,9 @@
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtGui import QFont
 from convert import csv_read as read
 from interface import enum
+from interface import delete
 
 import sys
 
@@ -51,7 +53,7 @@ class Window(QMainWindow):
         self.main_text.adjustSize()
         # Text
         self.text = QtWidgets.QLabel(self)
-        self.text.setText("Пусто: ")
+        self.text.setText("")
         self.text.move(200, 10)
         self.text.adjustSize()
         # Button1
@@ -102,8 +104,6 @@ class Window(QMainWindow):
         self.text_box1.show()
         # ContextButton
         self.context_button.show()
-        #
-
 
     def change(self):
         # Textbox1
@@ -115,15 +115,14 @@ class Window(QMainWindow):
         self.text_box1.setFixedWidth(100)
         self.text_box1.setPlainText("1")
         # ContextText
-        self.context_text.setText("Поле:")
+        self.context_text.setText(f"{data[0][0]} №")
         # TextBox1
         self.text_box1.show()
         # ContextButton
         self.context_button.show()
 
     def delete(self):
-        # Textbox1
-        self.text_box1.move(1000, 1000)
+        # Text
         self.text.setText("Удаление: ")
         self.text.adjustSize()
         # TextBox1
@@ -131,7 +130,7 @@ class Window(QMainWindow):
         self.text_box1.setFixedWidth(100)
         self.text_box1.setPlainText("1")
         # ContextText
-        self.context_text.setText("Поле:")
+        self.context_text.setText(f"{data[0][0]} №")
         # TextBox1
         self.text_box1.show()
         # ContextButton
@@ -142,7 +141,12 @@ class Window(QMainWindow):
         self.text_box1.move(1000, 1000)
         self.text.setText("Выход: ")
         self.text.adjustSize()
-        sys.exit(self.exec_())
+        # Context_Button
+        self.context_button.hide()
+        # Context_Text
+        self.context_text.setText("")
+        #
+        self.closeEvent()
 
 
 def application():
