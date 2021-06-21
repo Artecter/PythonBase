@@ -55,7 +55,7 @@ class Window(QMainWindow):
 
     def add_data(self):
         new_info = list()
-        Data(self.data).add(self.data, new_info)
+        self.data = Data(self.data).add(new_info)
         self.choice()
         self.context_text.setText(f"Добавлено {self.data[0][0]} №{self.number}")
         self.context_text.adjustSize()
@@ -116,7 +116,7 @@ class Window(QMainWindow):
         self.text_box1.setFixedWidth(100)
         self.text_box1.setPlainText("1")
         # ContextText
-        self.context_text.setText("Поле:")
+        self.context_text.setText(f"{self.data[0][1]}:")
         # TextBox1
         self.text_box1.show()
         # ContextButton
