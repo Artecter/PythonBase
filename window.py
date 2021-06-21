@@ -91,6 +91,9 @@ class Window(QMainWindow):
         self.txt.adjustSize()
         self.contxt_txt.setText('')
         self.contxt_btn.hide()
+        self.number_box.hide()
+        self.number_txt.hide()
+        self.number_btn.hide()
 
     def data_add(self):
         self.data = Data(self.data).add(self.contxt_box.toPlainText().split('\n'))
@@ -98,8 +101,14 @@ class Window(QMainWindow):
         self.txt.adjustSize()
         self.choice()
         self.contxt_btn.hide()
+        self.number_box.hide()
+        self.number_txt.hide()
+        self.number_btn.hide()
 
     def add(self):
+        self.number_box.show()
+        self.number_txt.show()
+        self.number_btn.show()
         self.txt.setText("Добавление: ")
         self.txt.adjustSize()
         self.contxt_box.move(300, 40)
