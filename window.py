@@ -52,8 +52,9 @@ class Window(QMainWindow):
 
     def fill(self):
         list1 = list()
-        for i in self.data[int(self.number_box.toPlainText())][1:]:
-            list1.append(i)
+        if int(self.number_box.toPlainText()) < int(self.data[-1][0])+1:
+            for i in self.data[int(self.number_box.toPlainText())][1:]:
+                list1.append(i)
         self.contxt_box.setText('\n'.join(list1))
 
     def choice(self):
