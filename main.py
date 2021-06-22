@@ -15,7 +15,7 @@ if interface:
 else:
     write(filename, console(data))
 
-pdf(filename)
+# pdf(filename)
 
 
 
