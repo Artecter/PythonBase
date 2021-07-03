@@ -26,11 +26,12 @@ class Data(object):
     def change(self, number, new_info):
         if int(number) > int(self.data_list[-1][0]):
             return self.data
-        list1 = list(str(number))
-        for i in new_info:
-            list1.append(i)
-        self.data_list[int(number)][:] = list1
-        return self.data_list
+        else:
+            list1 = list(str(number))
+            for i in new_info:
+                list1.append(i)
+            self.data_list[int(number)][:] = list1
+            return self.data_list
 
     def delete(self, number):
         if int(number) > int(self.data_list[-1][0]):

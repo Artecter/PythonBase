@@ -49,6 +49,9 @@ class Window(QMainWindow):
         self.number_btn.adjustSize()
         self.number_btn.clicked.connect(self.fill)
         self.number_btn.hide()
+        self.action_txt = QtWidgets.QLabel(self)
+        self.action_txt.setText("")
+        self.action_txt.move(25, 150)
 
     def fill(self):
         list1 = list()
@@ -97,7 +100,7 @@ class Window(QMainWindow):
         self.number_btn.hide()
 
     def data_add(self):
-        self.data = Data(self.data).add(self.contxt_box.toPlainText().split('\n')[:len(self.data[0][1:])])
+        self.data = list(Data(self.data).add(self.contxt_box.toPlainText().split('\n')[:len(self.data[0][1:])]))
         self.txt.setText('')
         self.txt.adjustSize()
         self.choice()

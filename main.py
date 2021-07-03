@@ -10,7 +10,7 @@ interface = open('config').read().split('\n')[0].split('=')[1]
 filename = open('config').read().split('\n')[1].split('=')[1]
 data = read(filename)
 
-if interface:
+if bool(int(interface)):
     window(filename, data)
 else:
     write(filename, console(data))
